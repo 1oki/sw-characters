@@ -1,1 +1,1 @@
-React application that shows Star Wars characters
+React application that displays Star Wars characters

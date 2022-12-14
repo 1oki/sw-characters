@@ -2,7 +2,7 @@
 const FavoriteCharactersPage = () => {
     return (
       <div className="favorite-characters">
-        Favorite Characters list
+        Favorite Characters List
       </div>
     );
 }
