@@ -41,7 +41,7 @@ const App = () => {
           
           <div className='container mx-auto mt-5 '>
             <form className="input-group mb-3 block" onSubmit={onSearchSubmit}>
-              <input type="text" className=" bg-neutral-700 font-medium block rounded-lg p-3 w-1/2 outline-yellowMain placeholder-yellowMain" value={term} onChange={(event) => setTerm(event.target.value)}  placeholder="Type character's name to search"/>
+              <input type="text" className=" bg-neutral-700 font-medium block rounded-lg p-3 w-1/2 focus:border-yellowMain outline-yellowMain placeholder-yellowMain" value={term} onChange={(event) => setTerm(event.target.value)}  placeholder="Type character's name to search"/>
             </form>
           </div>
           <Routes>

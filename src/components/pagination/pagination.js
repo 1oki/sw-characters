@@ -13,8 +13,8 @@ const Pagination = () => {
     }
 
     return (
-        <div className="container mx-auto border-b-2 w-1/3 py-5">
-            <ul className="inline-flex space-x-10 flex justify-between mx-auto  text-center ">
+        <div className="container mx-auto w-1/3 py-5">
+            <ul className="flex-row flex justify-between mx-auto  text-center ">
                 {pageNumbers.map( number => (
                     <li key={number} className="cursor-pointer">
                         <span onClick={() => dispatch(setCurrentPageNumber(number))}>
@@ -28,3 +28,5 @@ const Pagination = () => {
 }
   
 export default Pagination;
+
+
