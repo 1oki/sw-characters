@@ -1,41 +1,48 @@
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 import CharactersPage from '../characters-page';
 import FavoriteCharactersPage from '../favorite-characters-page';
 import Header from '../header';
 
-import { addCharacters } from '../../charactersSlice';
-
-// const getData = async (url) => {
-//   const res = await fetch(url);
-//   if (!res.ok) { 
-//     throw new Error(res.status)
-//   }
-//   const data = await res.json();
-//   return data;
-// }
-
-// getData('https://swapi.dev/api/people')
-//   .then((data) => {
-//     console.log(data)
-//   })
-//   .catch((err) => {
-//     console.log(`Request failed ${err}`);
-//   });
+import { fetchCharacters } from '../../charactersSlice';
 
 const App = () => {
   const chars = useSelector(state => state.characters.characters)
   const dispatch = useDispatch()
+  const [term, setTerm] = useState('')
+
+  useEffect(() => {
+    dispatch(fetchCharacters());
+  },[dispatch])
+
+  const onSearchSubmit = (event) => {
+    event.preventDefault();
+  }
+  const search = (chars, term) => {
+    if(term.length === 0) {
+      return chars;
+    }
+    return chars.filter((char) => {
+      return char.name.toLowerCase().indexOf(term.toLowerCase()) > -1;
+    })
+  }
+
+  const visibleCharacters = search(chars, term);
 
   return (
     <div className=" text-yellowMain bg-neutral-900">
         <Router>
           <Header/>
-          <button onClick={() => dispatch(addCharacters(prompt()))}>add char</button>
+          <div className='container mx-auto mt-10 '>
+            <form className="input-group mb-3 block" onSubmit={onSearchSubmit}>
+              <input type="text" className=" bg-neutral-700 font-medium block rounded-lg p-3 w-1/2 outline-yellowMain placeholder-yellowMain" value={term} onChange={(event) => setTerm(event.target.value)}  placeholder="Type character's name to search"/>
+            </form>
+          </div>
           <Routes>
-            <Route path="" element={<CharactersPage chars={chars}/>}/>
+            <Route path="" element={<CharactersPage chars={visibleCharacters}/>}/>
             <Route path="favorite" element={<FavoriteCharactersPage/>}/>
             
           </Routes>

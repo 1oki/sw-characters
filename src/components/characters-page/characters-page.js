@@ -14,10 +14,8 @@ const CharactersPage = ({ chars }) => {
       <div className="container mx-auto mt-11 ">
         <h2>All Star Wars Characters</h2> 
         <div className="container mx-auto grid grid-cols-3 gap-10 mt-10">
-          {/* <CharacterCard />   
-          <CharacterCard /> 
-          <CharacterCard />            */}
               {chars.map(char => 
+              // {console.log(char.id)}
                 <CharacterCard key={char.id} name={char.name}/>
                 )}
  
