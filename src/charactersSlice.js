@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
     status: false,
     error: null,
-    charactersNumber: 2,
+    charactersNumber: null,
     currentPageNumber: 1,
     characters: [],
     favoriteCharacters: []
@@ -13,14 +13,14 @@ export const fetchCharacters = createAsyncThunk(
     'characters/fetchCharacters',
     async (currentPageNumber, {rejectWithValue}) => {
         try{
-            console.log('page ',currentPageNumber)
+            // console.log('page ',currentPageNumber)
             const res = await fetch (`https://swapi.dev/api/people/?page=${currentPageNumber}`)
             if(!res.ok){
                 throw new Error('Server error');
             }
             const data = await res.json();
-            console.log(data)
-            console.log(data.count)
+            // console.log(data)
+            // console.log(data.count)
             return data;
         } catch (error) {
             return rejectWithValue(error.message)
@@ -36,7 +36,7 @@ export const charactersSlice = createSlice({
     initialState,
     reducers: {
         addToFaforite: (state,action) => {
-            console.log(`Add to favorite char with id ${action.payload}`)
+            // console.log(`Add to favorite char with id ${action.payload}`)
             if(state.favoriteCharacters.indexOf(action.payload ) === -1) {
                 state.favoriteCharacters.push(action.payload)
             }

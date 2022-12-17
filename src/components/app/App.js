@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import CharactersPage from '../characters-page';
 import FavoriteCharactersPage from '../favorite-characters-page';
 import Header from '../header';
-import Pagination from '../pagination';
 
 import { fetchCharacters } from '../../charactersSlice';
 
@@ -32,6 +31,8 @@ const App = () => {
     })
   }
 
+  // localStorage.setItem
+
   const visibleCharacters = search(characters, term);
 
   return (
@@ -41,14 +42,15 @@ const App = () => {
           
           <div className='container mx-auto mt-5 '>
             <form className="input-group mb-3 block" onSubmit={onSearchSubmit}>
-              <input type="text" className=" bg-neutral-700 font-medium block rounded-lg p-3 w-1/2 focus:border-yellowMain outline-yellowMain placeholder-yellowMain" value={term} onChange={(event) => setTerm(event.target.value)}  placeholder="Type character's name to search"/>
+              <input type="text" className=" bg-neutral-700 font-medium block rounded-lg p-3 lg:w-1/2 md:w-3/4 sm:w-full focus:border-yellowMain outline-yellowMain placeholder-yellowMain" value={term} onChange={(event) => setTerm(event.target.value)}  placeholder="Type character's name to search"/>
             </form>
           </div>
           <Routes>
-            <Route path="" element={<CharactersPage chars={visibleCharacters}/>}/>
+            <Route path="/" element={<CharactersPage chars={visibleCharacters}/>}/>
+
             <Route path="favorite" element={<FavoriteCharactersPage/>}/>
           </Routes>
-          <Pagination/>
+          {/* <Pagination/> */}
         </Router>
         
     </div>
