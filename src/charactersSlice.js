@@ -19,8 +19,9 @@ export const fetchCharacters = createAsyncThunk(
                 throw new Error('Server error');
             }
             const data = await res.json();
-            // console.log(data)
+            console.log(data)
             // console.log(data.count)
+            //const preparedData = addId(currentPageNumber, data)
             return data;
         } catch (error) {
             return rejectWithValue(error.message)
@@ -28,6 +29,21 @@ export const fetchCharacters = createAsyncThunk(
     }
 );
 
+// const addId = (currentPageNumber, data) => {
+//     for(const key of Object.keys(data.results)) {
+//         console.log(`${key}`);
+//         console.log('page num ', currentPageNumber);
+        
+//         let id = currentPageNumber * 10 - 9 + (+key);
+//         console.log('id ',id);
+        
+//         data.results.id = id;
+//         console.log('data.results.id ', data.results.id);
+//         console.log('  ');
+
+//     }
+//     return data;
+// }
 
 
 

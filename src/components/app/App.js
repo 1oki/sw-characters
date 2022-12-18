@@ -31,8 +31,6 @@ const App = () => {
     })
   }
 
-  // localStorage.setItem
-
   const visibleCharacters = search(characters, term);
 
   return (

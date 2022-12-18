@@ -12,12 +12,14 @@ const CharactersPage = ({ chars }) => {
   // const dispatch = useDispatch()
   const { error, status } = useSelector(state => state.characters)
 
+
+
   
     return (
       <div className="container mx-auto mt-5 ">
         <div className="container mx-auto grid lg:grid-cols-5 gap-10 md:grid-cols-2 sm:grid-cols-1 mt-5">
               {chars.map((char, index) => 
-                <CharacterCard key={index} elementIndex={index} name={char.name} />
+                <CharacterCard key={index} elementIndex={index} charData={char} />
               )}
         </div>
         {status === 'loading' && <h2>Loading...</h2>}

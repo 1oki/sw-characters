@@ -2,13 +2,15 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToFaforite } from '../../charactersSlice';
 
-const CharactersCard = ({ name, elementIndex }) => {
+const CharactersCard = ({ charData, elementIndex  }) => {
   const { currentPageNumber, favoriteCharacters } = useSelector(state => state.characters);
   const dispatch = useDispatch();
-  let id = currentPageNumber * 10 - 9 + elementIndex;
+
+  const charId = charData.url.split('/')[5]
+  let imgId = +charId;
   // "starwars-visualguide" has a bug with /assets/img/characters/17, so here is the hack to avoid it
-  if(id >= 17) {
-    id += 1
+  if(imgId >= 17) {
+    imgId += 1
   }
 
   const saveToLocalStorage = () => {
@@ -17,7 +19,7 @@ const CharactersCard = ({ name, elementIndex }) => {
   }
 
   const onFavoriteAdded = () => {
-    dispatch(addToFaforite(name));
+    dispatch(addToFaforite(charData.name));
     console.log('favoriteCharacters', favoriteCharacters)
     // saveToLocalStorage()
   }
@@ -30,16 +32,16 @@ const CharactersCard = ({ name, elementIndex }) => {
       })
     }
     saveToLocalStorage()
-
   }, [onFavoriteAdded])
+  
   
 
   return (
     <div className="text-center border-2 border-neutral-800 rounded-lg pb-5">
         <div className="flex items-center justify-center p-3">
-          <img className="rounded-lg" alt="description" src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
+          <img className="rounded-lg" alt="description" src={`https://starwars-visualguide.com/assets/img/characters/${imgId}.jpg`} />
         </div>
-        <h4>{name}</h4>
+        <h4>{charData.name}</h4>
         <h4>Character's homeworld</h4>
         <img onClick={onFavoriteAdded} data-emoji="♥" className="mx-auto w-5 mt-2 cursor-pointer" alt="♥" aria-label="♥" src="https://fonts.gstatic.com/s/e/notoemoji/15.0/2665/32.png" />
     </div>
