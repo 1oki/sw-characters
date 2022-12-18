@@ -2,16 +2,13 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToFaforite } from '../../charactersSlice';
 
-const CharactersCard = ({ charData, elementIndex  }) => {
-  const { currentPageNumber, favoriteCharacters } = useSelector(state => state.characters);
+const CharactersCard = ({ charData }) => {
+  const { favoriteCharacters } = useSelector(state => state.characters);
   const dispatch = useDispatch();
 
   const charId = charData.url.split('/')[5]
   let imgId = +charId;
-  // "starwars-visualguide" has a bug with /assets/img/characters/17, so here is the hack to avoid it
-  if(imgId >= 17) {
-    imgId += 1
-  }
+
 
   const saveToLocalStorage = () => {
     const serializedNames = JSON.stringify(favoriteCharacters);

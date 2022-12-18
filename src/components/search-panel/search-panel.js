@@ -1,33 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
-const SearchPanel = () => {
+const SearchPanel = (props) => {
     const [term, setTerm] = useState('')
 
-    const onSearchSubmit = (event) => {
+    const onSearchChange = (event) => {
+        setTerm(event.target.value)
         event.preventDefault();
-      }
-      const search = (chars, term) => {
-        if(term.length === 0) {
-          return chars;
-        }
-        return chars.filter((char) => {
-          return char.name.toLowerCase().indexOf(term.toLowerCase()) > -1;
-        })
-      }
+        console.log('onSearchChange')
+        // props.onSearchChange(term)        
+    }
 
-      const visibleCharacters = search(characters, term);
+    useEffect(() => {
+        props.onSearchChange(term)
+        // console.log('Search panel term',term)
+    },[term])
+
 
     return (
         <div className='container mx-auto mt-5 '>
-            <form className="input-group mb-3 block" onSubmit={onSearchSubmit}>
+            <form className="input-group mb-3 block" onSubmit={onSearchChange}>
               <input type="text" 
                 className=" bg-neutral-700 font-medium block rounded-lg p-3 lg:w-1/2 md:w-3/4 sm:w-full focus:border-yellowMain outline-yellowMain placeholder-yellowMain" 
                 value={term} 
-                onChange={(event) => setTerm(event.target.value)}  
+                onChange={onSearchChange}  
                 placeholder="Type character's name to search"/>
             </form>
-          </div>        
+        </div>        
     )
 }
 
