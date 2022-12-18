@@ -4,9 +4,10 @@ import { useState } from 'react';
 import Pagination from '../pagination';
 import CharacterCard from "../character-card";
 import SearchPanel from '../search-panel/search-panel';
+import Spinner from '../spinner';
 
 const CharactersPage = () => {
-  const [term, setTerm] = useState('')
+  const [ term, setTerm ] = useState('')
   const { characters, error, status } = useSelector(state => state.characters)
   
   const onSearchChange = (term) => {
@@ -24,6 +25,10 @@ const CharactersPage = () => {
 
   const visibleCharacters = search(characters, term);
 
+  if(status === 'loading') {
+    return <Spinner />
+  }
+
   return (
     <div className="container mx-auto mt-5 ">
       <SearchPanel onSearchChange={onSearchChange}/>
@@ -32,7 +37,6 @@ const CharactersPage = () => {
               <CharacterCard key={index} charData={char} />
             )}
       </div>
-      {status === 'loading' && <h2>Loading...</h2>}
       {error && <h2>An error occurred: {error}</h2>}
       {<Pagination/>}
     </div>
