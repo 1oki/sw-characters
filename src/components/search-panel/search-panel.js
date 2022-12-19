@@ -1,21 +1,17 @@
 import { useState, useEffect } from "react";
 
-
 const SearchPanel = (props) => {
     const [term, setTerm] = useState('')
 
     const onSearchChange = (event) => {
         setTerm(event.target.value)
         event.preventDefault();
-        console.log('onSearchChange')
-        // props.onSearchChange(term)        
+        console.log('onSearchChange')       
     }
 
     useEffect(() => {
         props.onSearchChange(term)
-        // console.log('Search panel term',term)
     },[term])
-
 
     return (
         <div className='container mx-auto mt-5 '>

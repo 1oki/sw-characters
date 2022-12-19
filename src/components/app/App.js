@@ -1,13 +1,13 @@
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import CharactersPage from '../characters-page';
 import FavoriteCharactersPage from '../favorite-characters-page';
 import Header from '../header';
 
-import { fetchCharacters } from '../../charactersSlice';
+import { fetchCharacters } from '../../store/charactersSlice';
 
 const App = () => {
   const { currentPageNumber } = useSelector(state => state.characters)
@@ -23,7 +23,6 @@ const App = () => {
           <Header/>
           <Routes>
             <Route path="/" element={<CharactersPage />}/>
-
             <Route path="favorite" element={<FavoriteCharactersPage/>}/>
           </Routes>
         </Router>

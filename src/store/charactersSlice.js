@@ -13,15 +13,11 @@ export const fetchCharacters = createAsyncThunk(
     'characters/fetchCharacters',
     async (currentPageNumber, {rejectWithValue}) => {
         try{
-            // console.log('page ',currentPageNumber)
             const res = await fetch (`https://swapi.dev/api/people/?page=${currentPageNumber}`)
             if(!res.ok){
                 throw new Error('Server error');
             }
             const data = await res.json();
-            console.log(data)
-            // console.log(data.count)
-
             return data;
         } catch (error) {
             return rejectWithValue(error.message)
@@ -29,19 +25,14 @@ export const fetchCharacters = createAsyncThunk(
     }
 );
 
-
-
-
-
 export const charactersSlice = createSlice({
     name: 'characters',
     initialState,
     reducers: {
         addToFaforite: (state,action) => {
-            // console.log(`Add to favorite char with id ${action.payload}`)
             if(state.favoriteCharacters.indexOf(action.payload ) === -1) {
                 state.favoriteCharacters.push(action.payload)
-            }
+            } 
         },
         setCurrentPageNumber: (state, action) => {
             state.currentPageNumber = action.payload

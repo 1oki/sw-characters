@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setCurrentPageNumber } from '../../charactersSlice';
-// navigation bar
+import { setCurrentPageNumber } from '../../store/charactersSlice';
 
 const Header = () => {
     const dispatch = useDispatch() 

@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentPageNumber } from "../../charactersSlice";
+import { setCurrentPageNumber } from "../../store/charactersSlice";
 
 
 const Pagination = () => {
     const dispatch = useDispatch();
     const { charactersNumber, currentPageNumber } = useSelector(state => state.characters)
-    // console.log('charactersNumber',charactersNumber)
     const pageNumbers = [];
 
     for(let i = 1; i <= Math.ceil(charactersNumber/10); i++) {
