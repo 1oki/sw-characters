@@ -1,44 +1,42 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToFaforite } from '../../store/charactersSlice';
+import { addToFaforite, removeFromFaforite } from '../../store/charactersSlice';
+import yellowHeartIcon from './yellow-heart.png'
+import yellowContourHeartIcon from './yellow-contour-heart.png'
 
 const CharactersCard = ({ charData }) => {
-  const { favoriteCharacters } = useSelector(state => state.characters);
+  const { favoriteCharacters } = useSelector(store => store.characters);
+  const favoriteCharactersRef = useRef(favoriteCharacters)
   const dispatch = useDispatch();
+  const charName = charData.name;
 
-  const charId = charData.url.split('/')[5]
-  let imgId = +charId;
+  const isFavorite = (charName) => (favoriteCharacters.find((item) => item.name === charName) ? true : false)
 
-  const saveToLocalStorage = () => {
-    const serializedNames = JSON.stringify(favoriteCharacters);
-    localStorage.setItem('favoriteCharacters', serializedNames)
-  }
+  const iconSrc = (isFavorite(charName) ? yellowHeartIcon : yellowContourHeartIcon)
 
-  const onFavoriteAdded = () => {
-    const charName = charData.name
-    dispatch(addToFaforite(charName));
-    if(favoriteCharacters.includes(charName)){
-      alert(`${charName} has already been added to favorites earlier`)
-    } else {alert(`You've added ${charName} to favorite`)}
-  }
-
-  useEffect(()=> {
-    const storage = JSON.parse(localStorage.getItem('favoriteCharacters'))
-    if(storage) {
-      storage.map(char => {
-        dispatch(addToFaforite(char))
-      })
+  const onToggleFavorite = () => {
+    if(!isFavorite(charName)) {
+      dispatch(addToFaforite(charData))
     }
-    saveToLocalStorage()
-  }, [onFavoriteAdded])
+    if(isFavorite(charName)) {
+      dispatch(removeFromFaforite(charName))
+    }
+  }
+
+  useEffect(() => {
+      if(favoriteCharactersRef.current !== favoriteCharacters) {
+        localStorage.setItem('favoriteCharacters', JSON.stringify(favoriteCharacters))
+      }
+  }, [favoriteCharacters])
   
   return (
     <div className="text-center border-2 border-neutral-800 rounded-lg pb-5">
         <div className="flex items-center justify-center p-3">
-          <img className="rounded-lg" alt="description" src={`https://starwars-visualguide.com/assets/img/characters/${imgId}.jpg`} />
+          <img className="rounded-lg" alt="description" src={charData.imgUrl} />
         </div>
         <h4>{charData.name}</h4>
-        <img onClick={onFavoriteAdded} title="Add To Favorite" data-emoji="♥" className="mx-auto w-5 mt-2 cursor-pointer" alt="♥" aria-label="♥" src="https://fonts.gstatic.com/s/e/notoemoji/15.0/2665/32.png" />
+        <h4>Homeworld: {charData.homeworld}</h4>
+        <img onClick={onToggleFavorite} title="Add To Favorite" data-emoji="♥" className="mx-auto w-5 mt-2 cursor-pointer" alt="♥" aria-label="♥" src={iconSrc} />
     </div>
   );
 }
