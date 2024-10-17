@@ -87,5 +87,18 @@ sw-characters/
 ├── tailwind.config.js          # Tailwind CSS configuration
 ├── postcss.config.js           # PostCSS configuration
 └── README.md                   # Project documentation (you are here)
+```
 
+## Contributing
+Contributions are welcome! If you'd like to contribute to the project, please follow these steps:
+
+Fork the repository.
+Create a new branch (git checkout -b feature-branch).
+Make your changes.
+Commit your changes (git commit -m 'Add new feature').
+Push to the branch (git push origin feature-branch).
+Open a pull request.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
