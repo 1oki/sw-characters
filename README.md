@@ -17,7 +17,7 @@ This is a **React** and **Redux** based application that fetches and displays a 
 - **Character Listing**: Fetches and displays a list of Star Wars characters.
 - **Search**: Search characters by name.
 - **Gender Filter**: Filter characters by gender.
-- **Favorites**: Mark characters as favorite and view them in a separate section.
+- **Favorites**: Mark characters as favorite and view them in a separate section. Favorite characters are saved in localStorage.
 - **Pagination**: Navigate through large lists of characters using pagination.
 - **Responsive UI**: Mobile-friendly design using TailwindCSS.
 

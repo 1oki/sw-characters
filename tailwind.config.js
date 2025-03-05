@@ -12,10 +12,14 @@ module.exports = {
         yellowMain: '#FFE300'
       },
       screens:{
-        xs: '335px',
+        // xs: '335px',
         sm: '480px',
         md: '780px',
-        lg: '1028px'
+        lg: '1024px',
+        llg: '1280px',
+        xl: '1440px',
+        '2xl': '1600px',
+        '3xl': '1920px'
       }
     },
   },
