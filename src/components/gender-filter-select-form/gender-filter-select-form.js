@@ -9,10 +9,8 @@ import { useState, useEffect } from "react";
  * selects a different option from the form or when the component mounts.
  * The component renders a select element with options for all characters, male
  * characters, female characters, and characters with unknown gender.
- * @param {Object} props - The props object should contain a function to be called
  * when the user selects a different option from the form. The function should
  * accept a single string argument, the current filter selection.
- * @returns {JSX.Element} The rendered component.
  */
 const GenderFilterSelectForm = (props) => {
     const [genderFilterValue, setGenderFilterValue ] = useState('')

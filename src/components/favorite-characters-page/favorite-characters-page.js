@@ -10,7 +10,6 @@ import { removeFromFavorite } from "../../store/charactersSlice";
  * The component uses the useDispatch hook to get the dispatch function and the useSelector hook to get the favoriteCharacters from the Redux store.
  * The component renders a grid of CharacterImages and text.
  * The component is styled with CSS to have a yellow border when the button is clicked.
- * @returns {JSX.Element} The rendered component displaying favorite characters and controls.
  */
 
 const FavoriteCharactersPage = () => {

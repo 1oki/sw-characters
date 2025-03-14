@@ -15,8 +15,6 @@ import GenderFilterSelectForm from '../gender-filter-select-form';
  * The component uses Redux to access the characters data from the store and
  * manages the gender filter state locally. It renders a spinner while data is
  * being loaded, displays the search results, and shows any errors that occur.
- * 
- * @returns {JSX.Element} The rendered component displaying characters and controls.
  */
 
 const CharactersPage = () => {
@@ -26,14 +24,6 @@ const CharactersPage = () => {
   const onGenderFilterChange = useCallback((genderFilterValue) => {
     setGenderFilterValue(genderFilterValue)
   }, [])
-
-  /**
-   * Filters an array of characters by gender.
-   * If the gender filter is empty, it returns the original array.
-   * @param {array} chars - The array of characters to filter.
-   * @param {string} filterValue - The gender filter value.
-   * @returns {array} The filtered array of characters.
-   */
 
   const filterGender = (chars,  filterValue) => {
     if(filterValue === '') {

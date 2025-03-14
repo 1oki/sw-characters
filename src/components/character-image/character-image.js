@@ -5,12 +5,10 @@ import placeholder from "./placeholder-img.jpg"; // Fallback image
 
 /**
  * CharacterImage component renders an image of a Star Wars character.
- * It accepts a "url" prop which is the URL of the character image.
  * It uses the useState and useEffect hooks to preload the image before updating the state to avoid flickering.
  * If the image fails to load, it logs an error message, sets the image source to a placeholder, and updates the loading state to false.
  * It also optimizes the event handler to avoid re-creating the function on each render.
  * It renders a placeholder while the image is loading, and renders the actual image when it's loaded.
- * It also sets the width and height of the image to 200 and 350 respectively.
  */
 
 const CharacterImage = ({ url }) => {

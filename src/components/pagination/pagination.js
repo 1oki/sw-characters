@@ -9,7 +9,6 @@ import { setCurrentPageNumber } from "../../store/charactersSlice";
  * The component renders a list of page numbers in the form of a ul with li elements. Each li element is a button with a number, and the button is styled differently if the number matches the current page number.
  * The component is styled with CSS to be a flex row with justify-around and centering.
  * The component is also styled with CSS to have a yellow border when the button is clicked.
- * @returns {JSX.Element} The rendered pagination component.
  */
 
 const Pagination = () => {

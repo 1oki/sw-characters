@@ -29,8 +29,8 @@ const SearchPanel = () => {
     /**
      * Handles the search form submission. Dispatches an action to search for characters
      * based on the current search term and resets the page number to 1.
-     * @param {Event} event - The event that triggered the function.
      */
+    
     const handleSearchSubmit = (event) => {
         event.preventDefault();
         dispatch(searchCharacters({ searchTerm: term, pageNumber: 1 }));

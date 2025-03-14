@@ -1,4 +1,3 @@
-// components/app/App.js
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorite, fetchCharacters, searchCharacters } from '../../store/charactersSlice';
@@ -13,7 +12,6 @@ import Header from '../header';
  * The App component renders the Header, and below it the Routes for the CharactersPage and FavoriteCharactersPage.
  * It also fetches the characters data from the API and puts it in the Redux store when the component mounts.
  * Additionally, it checks if the user has already favorited some characters and if so, adds them to the Redux store.
- * @returns {JSX.Element} The App component.
  */
 
 const App = () => {

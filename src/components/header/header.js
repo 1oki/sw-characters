@@ -4,8 +4,8 @@ import { fetchCharacters, setSearchPhrase } from '../../store/charactersSlice';
 
 
 /**
- * The Header component renders a navigation bar with two links: "Main" and "Favorite Characters". When the "Main" link is clicked, it fetches the characters from the API and resets the search phrase to empty string.
- * @returns {JSX.Element} The rendered component.
+ * The Header component renders a navigation bar with two links: "Main" and "Favorite Characters". 
+ * When the "Main" link is clicked, it fetches the characters from the API and resets the search phrase to empty string.
  */
 
 const Header = () => {

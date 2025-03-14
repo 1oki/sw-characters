@@ -12,12 +12,6 @@ import CharacterImage from '../character-image/character-image';
  * Provides a clickable icon to add or remove the character from the favorites list.
  * The favorite status is determined by checking if the character is in the Redux store.
  * When the favorite status changes, it updates the local storage.
- * 
- * @param {Object} charData - The data of the character to display.
- * @param {string} charData.id - The unique identifier of the character.
- * @param {string} charData.name - The name of the character.
- * @param {string} charData.homeworld - The homeworld of the character.
- * @param {string} charData.imgUrl - The URL of the character's image.
  */
 
 const CharactersCard = ({ charData }) => {
@@ -29,13 +23,7 @@ const CharactersCard = ({ charData }) => {
   const isFavorite = favoriteCharacters.find((item) => item.id === charId) ? true : false
   const iconSrc = (isFavorite ? yellowHeartIcon : yellowContourHeartIcon)
 
-
-  /**
-   * Toggles the favorite status of a character.
-   * If the character is already a favorite, it will be removed from the favorite list.
-   * If the character is not a favorite, it will be added to the favorite list.
-   */
-
+  //Toggles the favorite status of a character.
   const onToggleFavorite = () => {
     isFavorite ? dispatch(removeFromFavorite(charId)) : dispatch(addToFavorite(charData))
   }
